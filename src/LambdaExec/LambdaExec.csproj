@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Version>0.1.0</Version>
+    <AssemblyName>Musement.LambdaExec</AssemblyName>
+    <Company>Musement</Company>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackAsTool>True</PackAsTool>
+    <ToolCommandName>dotnet-lambda-exec</ToolCommandName>
+    <PackageOutputPath>./nupkg</PackageOutputPath>
+    <Authors>Musement;Kipware</Authors>
+    <PackageTags>dotnet-core aws-lambda aws-lambda-csharp local-development development-utility aws csharp</PackageTags>
+    <Description>A CLI utility to quickly launch .NET Core-based AWS Lambda functions</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PublishRepositoryUrl>True</PublishRepositoryUrl>
+    <IncludeSymbols>True</IncludeSymbols>
+    <IncludeSource>True</IncludeSource>
+    <RepositoryUrl>https://github.com/musement/dotnet-lambda-exec</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EMG.Lambda.LocalRunner" Version="1.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="System.CommandLine.DragonFruit" Version="0.2.0-alpha*" />
+  </ItemGroup>
+
+</Project>
