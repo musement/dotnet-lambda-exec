@@ -66,12 +66,20 @@ namespace LambdaExec
             var returnType = method.ReturnType;
             var paramTypes = method.GetParameters();
             var inputType = GetInputType(paramTypes);
+            var isAsync = false;
 
             var builder = LambdaRunner.Create();
             
             if (port.HasValue)
             {
                 builder = builder.UsePort(port.Value);
+            }
+
+            if (returnType.IsGenericType && 
+                returnType.GetGenericTypeDefinition() == typeof(Task<>))
+            {
+                returnType = returnType.GetGenericArguments()[0];
+                isAsync = true;
             }
 
             object receivingBuilder = inputType == null
@@ -86,9 +94,12 @@ namespace LambdaExec
 
             var lambdaDelegate = BuildHandler(lambdaType, method, inputType);
 
+            var usesFunctionMethodName = isAsync
+                ? "UsesAsyncFunction"
+                : "UsesFunction";
             var runnerBuilder = returningBuilder
                 .GetType()
-                .GetMethod("UsesFunction")
+                .GetMethod(usesFunctionMethodName)
                 .MakeGenericMethod(lambdaType)
                 .Invoke(returningBuilder, new[] { lambdaDelegate.Compile() });
 
