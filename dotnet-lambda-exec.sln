@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F9E98DBC-F19
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LambdaExec", "src\LambdaExec\LambdaExec.csproj", "{04E0B038-2C19-4AA8-853B-0A6BCEE48D37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleFunction", "src\SimpleFunction\SimpleFunction.csproj", "{763F8354-FEAB-44FA-BB3D-45E514149161}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleFunction", "src\Samples\SimpleFunction\SimpleFunction.csproj", "{763F8354-FEAB-44FA-BB3D-45E514149161}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

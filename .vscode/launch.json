@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/src/LambdaExec/bin/Debug/netcoreapp2.2/LambdaExec.dll",
+            "program": "${workspaceFolder}/src/LambdaExec/bin/Debug/netcoreapp2.2/Musement.LambdaExec.dll",
             "args": [
-                "--defaults-json=src/SimpleFunction/aws-lambda-tools-defaults.json",
+                "--defaults-json=src/Samples/SimpleFunction/aws-lambda-tools-defaults.json",
                 "--debug-mode",
                 "--port:6000"
             ],
