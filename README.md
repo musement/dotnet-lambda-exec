@@ -34,7 +34,7 @@ The default port is 5000, but you can make it use a different one passing
 The tool is still in its early stage. Here is a list of features planned but
 not yet implemented:
 
-- [ ] Support for async functions, only synchronous functions are supported at
+- [x] Support for async functions, only synchronous functions are supported at
 the moment
 - [ ] Custom serializers
 - [ ] Smarter search for the assembly. Currently it bails out with an error if

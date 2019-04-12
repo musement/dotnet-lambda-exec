@@ -55,7 +55,15 @@ namespace LambdaExec
                 return -7;
             }
 
-            var runner = BuildRunner(reflectionInfo.lambdaType, reflectionInfo.method, port);
+            IRunner runner;
+            try
+            {
+                runner = BuildRunner(reflectionInfo.lambdaType, reflectionInfo.method, port);
+            }
+            catch
+            {
+                return -8;
+            }
 
             await runner.RunAsync();
             return 0;
@@ -67,6 +75,12 @@ namespace LambdaExec
             var paramTypes = method.GetParameters();
             var inputType = GetInputType(paramTypes);
             var isAsync = false;
+
+            if (returnType == typeof(void) || returnType == typeof(Task))
+            {
+                Console.WriteLine("Target lambda must return a value");
+                throw new InvalidOperationException();
+            }
 
             var builder = LambdaRunner.Create();
             
