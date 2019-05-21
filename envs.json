@@ -1,0 +1,5 @@
+{
+    "SECRET_KEY": "SuperSecretKey",
+    "ANOTHER_ONE": "BitesTheDust",
+    "FOO": null
+}

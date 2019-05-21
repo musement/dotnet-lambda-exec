@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
@@ -17,7 +18,8 @@ namespace LambdaExec
         static async Task<int> Main(
             string defaultsJson = "aws-lambda-tools-defaults.json", 
             bool debugMode = false, 
-            int? port = null)
+            int? port = null,
+            string envsFile = null)
         {
             if (string.IsNullOrWhiteSpace(defaultsJson))
             {
@@ -35,6 +37,31 @@ namespace LambdaExec
             {
                 Console.WriteLine($"Invalid port {port}, it should be a number between 0 and 65535");
                 return -3;
+            }
+
+            if (envsFile != null)
+            {
+                if (!File.Exists(envsFile))
+                {
+                    Console.WriteLine($"Invalid path for envs file: {envsFile}");
+                    return -9;
+                }
+
+                Dictionary<string, string> envVars;
+                try
+                {
+                    var envFileContent = await File.ReadAllTextAsync(envsFile);
+                    envVars = JsonConvert.DeserializeObject<Dictionary<string, string>>(envFileContent);
+                    foreach (var (key, value) in envVars)
+                    {
+                        Environment.SetEnvironmentVariable(key, value);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Errore reading envs JSON file: {e.GetType().Name}\n{e.ToString()}");
+                    return -10;
+                }
             }
 
             LambdaManifest manifest;

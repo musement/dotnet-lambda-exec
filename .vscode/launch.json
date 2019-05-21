@@ -12,10 +12,15 @@
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/src/LambdaExec/bin/Debug/netcoreapp2.2/Musement.LambdaExec.dll",
             "args": [
-                "--defaults-json=src/Samples/SimpleFunction/aws-lambda-tools-defaults.json",
+                "--defaults-json=src/Samples/EnvFunction/aws-lambda-tools-defaults.json",
                 "--debug-mode",
-                "--port:6000"
+                "--port:6000",
+                "--envs-file=envs.json"
             ],
+            "env": {
+                "ANOTHER_ONE": "AnotherOne",
+                "FOO": "BAR"
+            },
             "cwd": "${workspaceFolder}",
             // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
             "console": "internalConsole",
